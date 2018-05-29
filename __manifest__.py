@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Odoo for small business"
+    'name': "Cost Benefit Analysis For Small Business",
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        This Module is useful for small business like coffee shop of analysis cost and benefit""",
 
     'description': """
-        Long description of module's purpose
+        Feture
+		- Compute cost of goods
+		- Record Daily Benefit
+		- Record Daily Expenses
     """,
 
-    'author': "Caramel Cafe",
+    'author': "Popboon (Air) Mahachanawong for Caramel Cafe",
     'website': "http://www.caramelcafe.co.th",
 
     # Categories can be used to filter modules in modules listing
@@ -23,11 +25,8 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
     ],
 }

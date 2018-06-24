@@ -1,26 +1,65 @@
 <odoo>
     <data>
     
+	<!-- Form View -->
+	<record model="ir.ui.view" id="product_all_product_form">
+	<field name="name">Product Form</field>
+	<field name="model">cba.product</field>
+	<field name="arch" type="xml">
+	    <form string="Product Form">
+		<group>
+			<field name="name"/>
+			<field name="product_outcome"/>
+			<field name="cost_per_outcome"/>
+			<field name="sale_price"/>
+			<field name="profit_loss"/>
+		</group>
+        	<field name="bom_line_ids" editable="bottom">
+			<tree>
+				<field name="material_id"/>
+				<field name="materials_used"/>
+				<field name="uom_id"/>
+
+			</tree>
+		</field>
+	    </form>
+	</field>
+	</record>
+    
+	<!-- Tree View -->	
+	<record model="ir.ui.view" id="product_all_product_list">
+		<field name="name">product List</field>
+		<field name="model">cba.product</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="product_outcome"/>
+				<field name="cost_per_outcome"/>
+				<field name="sale_price"/>
+				<field name="profit_loss"/>
+			</tree>
+		</field>
+	</record>
+    
+    
         <!-- actions opening views on models  -->
 	<record model="ir.actions.act_window" id="cba_product_all_product_action_windows">
 		<field name="name">All Product</field>
 		<field name="res_model">cba.product</field>
 		<field name="view_mode">tree,form</field>
 	</record>
+	
+
+    	<!-- menu categories -->
+    	<menuitem name="All Product" id="cba_product_all_product_sub_menu" parent="cost_benefit_analysis.product_material_menu_root"/>  -->
     
     
         <!-- menu actions  -->
-	<menuitem name="All Product" id="cba_product_all_product_action_menu" parent="cba_product_menu_root"
+	<menuitem name="All Product" id="cba_product_all_product_action_menu" parent="cba_product_all_product_sub_menu"
               action="cba_product_all_product_action_windows"/> 
 
-	
-	<!-- Top menu item -->	
-	<menuitem name="Product And Material" id="cba_product_material_menu_root"/>
 
-
-
-    	<!-- menu categories
-    	<menuitem name="All Product" id="cba_product_all_product_sub_menu" parent="cba_product_menu_root"/>  -->
     
     </data>
 </odoo>
+

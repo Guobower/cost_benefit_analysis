@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+    
+	<!-- Form View -->
+	<record model="ir.ui.view" id="material_all_material_form">
+	<field name="name">Material Form</field>
+	<field name="model">cba.material</field>
+	<field name="arch" type="xml">
+	    <form string="Material Form">
+		<group>
+			<field name="display_name"/>
+			<field name="name"/>
+			<field name="quantity_per_unit"/>
+			<field name="uom_id"/>
+			<field name="avg_price_per_unit"/>
+		</group>
+        	<field name="expenses_history_ids">
+			<tree>
+				<field name="date"/>
+				<field name="vendor_id"/>
+				<field name="quantity"/>
+				<field name="price_per_unit"/>
+				<field name="total_price"/>
+			</tree>
+		</field>
+	    </form>
+	</field>
+	</record>
+    	
+	<!-- Tree View -->	
+	<record model="ir.ui.view" id="material_all_material_list">
+		<field name="name">Material List</field>
+		<field name="model">cba.material</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="display_name"/>
+				<field name="quantity_per_unit"/>
+				<field name="uom_id"/>
+				<field name="avg_price_per_unit"/>
+			</tree>
+		</field>
+	</record>
+    
+        <!-- actions opening views on models  -->
+	<record model="ir.actions.act_window" id="material_all_material_action_windows">
+		<field name="name">All Material</field>
+		<field name="res_model">cba.material</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- Top menu item -->	
+	<menuitem name="Product And Material" id="product_material_menu_root"/>
+
+
+    	<!-- menu categories -->
+    	<menuitem name="All Material" id="material_all_material_sub_menu" parent="product_material_menu_root"/> 
+
+        <!-- menu actions  -->
+	<menuitem name="All Material" id="material_all_material_action_menu" parent="material_all_material_sub_menu"
+              action="material_all_material_action_windows"/>
+	         
+    </data>
+</odoo>

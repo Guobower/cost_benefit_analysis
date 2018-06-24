@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+    	
+	<!-- Form View -->
+	<record model="ir.ui.view" id="daily_expense_form">
+	<field name="name">Daily Expense Form</field>
+	<field name="model">cba.daily_expenses</field>
+	<field name="arch" type="xml">
+	    <form string="Daily Expense Form">
+			<group>
+               	<field name="date"/>
+				<field name="total_expenses_amount"/>
+			</group>
+        	<field name="daily_expenses_line_ids">
+				<tree  editable="bottom" >
+					<field name="material_id"/>
+					<field name="vendor_id"/>
+					<field name="quantity"/>
+					<field name="price_per_unit"/>
+					<field name="total_price"/>
+				</tree>
+			</field>
+	    </form>
+	</field>
+	</record>
+    	
+	<!-- Tree View -->	
+	<record model="ir.ui.view" id="daily_expense_list">
+		<field name="name">Daily Expense List</field>
+		<field name="model">cba.daily_expenses</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="date"/>
+				<field name="total_expenses_amount"/>
+			</tree>
+		</field>
+	</record>
+    
+        <!-- actions opening views on models  -->
+	<record model="ir.actions.act_window" id="daily_expense_action_windows">
+		<field name="name">Daily Expense</field>
+		<field name="res_model">cba.daily_expenses</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- Top menu item -->	
+	<menuitem name="Daily Cashflow" id="daily_cashflow_menu_root"/>
+
+
+    	<!-- menu categories -->
+    	<menuitem name="Expense" id="daily_cashflow_expense_sub_menu" parent="daily_cashflow_menu_root"/> 
+
+        <!-- menu actions  -->
+	<menuitem name="Daily Expense" id="daily_expense_action_menu" parent="daily_cashflow_expense_sub_menu"
+              action="daily_expense_action_windows"/>
+	         
+    </data>
+</odoo>

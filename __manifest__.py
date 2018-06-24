@@ -11,7 +11,7 @@
 		- Record Daily Expenses
     """,
 
-    'author': "Popboon (Air) Mahachanawong for Caramel Cafe",
+    'author': "Popboon (Air) Mahachanawong",
     'website': "http://www.caramelcafe.co.th",
 
     # for the full list
@@ -24,6 +24,8 @@
     # always loaded
     'data': [
     	'security/ir.model.access.csv',
-        'views/product_view.xml',
+	'views/material_view.xml',
+	'views/product_view.xml',
+        'views/daily_cashflow_view.xml',
     ],
 }

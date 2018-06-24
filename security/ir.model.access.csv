@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cba_product,cba.product,model_cba_product,base.group_user,1,1,1,1
+access_cba_meterial,cba.meterial,model_cba_meterial,base.group_user,1,1,1,1

@@ -11,7 +11,7 @@ class DailyExpense( models.Model ):
     book_date = fields.Date( string = 'Book Date',
                                 default = fields.Date.today() )
 
-    daily_expenses_line_ids = fields.One2many(   comodel_name='daily_expenses_line',
+    daily_expenses_line_ids = fields.One2many(   comodel_name='cba.daily_expenses_line',
                                                     inverse_name='daily_expense_id',
                                                     string='Daily Expenses Lists' )
 
@@ -33,9 +33,9 @@ class DailyExpenseLine( models.Model ):
 
     _name = 'cba.daily_expenses_line'
 
-    daily_expenses_id = fields.Many2one( comodel_name = 'daily_expenses' )
+    daily_expense_id = fields.Many2one( comodel_name = 'cba.daily_expenses' )
 
-    product_id = fields.Many2one( comodel_name = 'product' )
+    product_id = fields.Many2one( comodel_name = 'cba.product' )
 
     vendor_id = fields.Many2one( comodel_name = 'res.partner',
                                     domain = [ ('supplier','=', True )],
@@ -61,7 +61,7 @@ class DailyIncome( models.Model ):
     book_date = fields.Date( string = 'Book Date',
                                 default = fields.Date.today() )
 
-    daily_income_line_ids = fields.One2many(   comodel_name='daily_income_line',
+    daily_income_line_ids = fields.One2many(   comodel_name='cba.daily_income_line',
                                                     inverse_name='daily_income_id',
                                                     string='Daily Income Lists' )
 
@@ -83,9 +83,9 @@ class DailyIncomeLine( models.Model ):
 
     _name = 'cba.daily_income_line'
 
-    daily_expenses_id = fields.Many2one( comodel_name = 'daily_expenses' )
+    daily_income_id = fields.Many2one( comodel_name = 'cba.daily_income' )
 
-    product_id = fields.Many2one( comodel_name = 'product' )
+    product_id = fields.Many2one( comodel_name = 'cba.product' )
 
     price = fields.Float( string = 'Price', default = 0.0 )
 
@@ -98,12 +98,3 @@ class Cashflow( models.Model ):
     _name = 'cba.cashflow'
 
     name = fields.Char()
-
-class Product( models.Model ):
-    _name = 'cba.product'
-
-    name = fields.Char()
-
-    quantity = fields.Float( string = 'Quantity', default = 0.0 )
-
-    uom_id = fields.Many2one( comodel_name = 'product.uom' )

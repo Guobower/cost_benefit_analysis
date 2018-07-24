@@ -67,12 +67,14 @@ class DailyExpenseLine( models.Model ):
 			recordObj.total_price = recordObj.price_per_unit * recordObj.quantity
 
 
-#class DailyIncome( models.Model ):
-#
-#    _name = 'cba.daily_income'
-#
-#    book_date = fields.Date( string = 'Book Date',
-#                                default = fields.Date.today() )
+class DailyIncome( models.Model ):
+
+    _name = 'cba.daily_income'
+
+    date = fields.Date( string = 'Date', default = fields.Date.today() )
+
+	daily_income = fields.Float()
+	
 #
 #    daily_income_line_ids = fields.One2many(   comodel_name='cba.daily_income_line',
 #                                                    inverse_name='daily_income_id',

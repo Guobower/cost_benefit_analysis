@@ -23,6 +23,19 @@
 	    </form>
 	</field>
 	</record>
+
+	<record model="ir.ui.view" id="daily_income_form">
+	<field name="name">Daily Income Form</field>
+	<field name="model">cba.daily_income</field>
+	<field name="arch" type="xml">
+	    <form string="Daily Income Form">
+			<group>
+               	<field name="date"/>
+				<field name="total_expenses_amount"/>
+			</group>
+	    </form>
+	</field>
+	</record>
     	
 	<!-- Tree View -->	
 	<record model="ir.ui.view" id="daily_expense_list">
@@ -35,11 +48,28 @@
 			</tree>
 		</field>
 	</record>
+
+	<record model="ir.ui.view" id="daily_income_list">
+		<field name="name">Daily Income List</field>
+		<field name="model">cba.daily_income</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="date"/>
+				<field name="daily_income"/>
+			</tree>
+		</field>
+	</record>
     
-        <!-- actions opening views on models  -->
+    <!-- actions opening views on models  -->
 	<record model="ir.actions.act_window" id="daily_expense_action_windows">
 		<field name="name">Daily Expense</field>
 		<field name="res_model">cba.daily_expenses</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="daily_income_action_windows">
+		<field name="name">Daily Income</field>
+		<field name="res_model">cba.daily_income</field>
 		<field name="view_mode">tree,form</field>
 	</record>
 
@@ -47,12 +77,19 @@
 	<menuitem name="Daily Cashflow" id="daily_cashflow_menu_root"/>
 
 
-    	<!-- menu categories -->
-    	<menuitem name="Expense" id="daily_cashflow_expense_sub_menu" parent="daily_cashflow_menu_root"/> 
+    <!-- menu categories -->
+    <menuitem name="Expense" id="daily_cashflow_expense_sub_menu" parent="daily_cashflow_menu_root"/> 
 
         <!-- menu actions  -->
 	<menuitem name="Daily Expense" id="daily_expense_action_menu" parent="daily_cashflow_expense_sub_menu"
               action="daily_expense_action_windows"/>
+
+	<!-- menu categories -->
+    <menuitem name="Income" id="daily_cashflow_income_sub_menu" parent="daily_cashflow_menu_root"/> 
+
+        <!-- menu actions  -->
+	<menuitem name="Daily Income" id="daily_income_action_menu" parent="daily_cashflow_income_sub_menu"
+              action="daily_income_action_windows"/>
 	         
     </data>
 </odoo>

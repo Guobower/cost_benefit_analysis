@@ -31,7 +31,7 @@
 	    <form string="Daily Income Form">
 			<group>
                	<field name="date"/>
-				<field name="total_expenses_amount"/>
+				<field name="daily_income"/>
 			</group>
 	    </form>
 	</field>

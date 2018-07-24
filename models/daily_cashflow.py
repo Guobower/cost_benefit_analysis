@@ -73,7 +73,7 @@ class DailyIncome( models.Model ):
 
     date = fields.Date( string = 'Date', default = fields.Date.today() )
 
-	daily_income = fields.Float()
+    daily_income = fields.Float()
 	
 #
 #    daily_income_line_ids = fields.One2many(   comodel_name='cba.daily_income_line',

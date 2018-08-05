@@ -13,8 +13,8 @@
 			<field name="quantity_per_unit"/>
 			<field name="uom_id"/>
 			<field name="avg_price_per_unit"/>
-		</group>
-        	<field name="expenses_history_ids">
+		
+        <field name="expenses_history_ids" readonly="1">
 			<tree>
 				<field name="date"/>
 				<field name="vendor_id"/>
@@ -23,6 +23,7 @@
 				<field name="total_price"/>
 			</tree>
 		</field>
+		</group>
 	    </form>
 	</field>
 	</record>

@@ -22,6 +22,8 @@ class Material( models.Model ):
                                                     inverse_name='material_id',
                                                     string='Expenses History' )
     
+	default_price_per_unit = fields.Float( string = 'Default Price' )
+	
 	avg_price_per_unit = fields.Float( compute="_compute_avg_price_per_unit" )
 	
 

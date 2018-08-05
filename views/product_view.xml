@@ -13,15 +13,15 @@
 			<field name="cost_per_outcome"/>
 			<field name="sale_price"/>
 			<field name="profit_loss"/>
-		</group>
-        	<field name="bom_line_ids" editable="bottom">
-			<tree>
-				<field name="material_id"/>
-				<field name="materials_used"/>
-				<field name="uom_id"/>
+        	<field name="bom_line_ids">
+				<tree editable="bottom" >
+					<field name="material_id"/>
+					<field name="materials_used"/>
+					<field name="uom_id"/>
 
-			</tree>
-		</field>
+				</tree>
+			</field>
+		</group>
 	    </form>
 	</field>
 	</record>

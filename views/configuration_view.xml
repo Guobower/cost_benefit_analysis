@@ -1,0 +1,78 @@
+<odoo>
+    <data>
+    
+	<!-- Form View 
+	<record model="ir.ui.view" id="material_all_material_form">
+	<field name="name">Material Form</field>
+	<field name="model">cba.material</field>
+	<field name="arch" type="xml">
+	    <form string="Material Form">
+		<group>
+			<field name="display_name"/>
+			<field name="name"/>
+			<field name="quantity_per_unit"/>
+			<field name="uom_id"/>
+			<field name="avg_price_per_unit"/>
+		</group>
+        	<field name="expenses_history_ids">
+			<tree>
+				<field name="date"/>
+				<field name="vendor_id"/>
+				<field name="quantity"/>
+				<field name="price_per_unit"/>
+				<field name="total_price"/>
+			</tree>
+		</field>
+	    </form>
+	</field>
+	</record> -->
+    	
+	<!-- Tree View 
+	<record model="ir.ui.view" id="material_all_material_list">
+		<field name="name">Material List</field>
+		<field name="model">cba.material</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="display_name"/>
+				<field name="quantity_per_unit"/>
+				<field name="uom_id"/>
+				<field name="avg_price_per_unit"/>
+			</tree>
+		</field>
+	</record> -->
+    
+    <!-- actions opening views on models  -->
+	<record model="ir.actions.act_window" id="cba_all_partner_action_windows">
+		<field name="name">All Partner</field>
+		<field name="res_model">res.partner</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	
+	<record model="ir.actions.act_window" id="cba_unit_of_measure_action_windows">
+		<field name="name">Unit of measure</field>
+		<field name="res_model">product.uom</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- Top menu item -->	
+	<menuitem name="CBA Configuration" id="cba_configuration_menu_root"/>
+
+
+    <!-- menu partner -->
+    <menuitem name="All Partner" id="cba_all_partner_sub_menu" parent="cba_configuration_menu_root"/>
+	
+    <!-- menu uom  -->
+    <menuitem name="Unit of measure" id="cba_unit_of_measure_sub_menu" parent="cba_configuration_menu_root"/>
+	
+		
+
+    <!-- menu actions  -->
+	<menuitem name="All Partner" id="cba_all_partner_action_menu" parent="cba_all_partner_sub_menu"
+              action="cba_all_partner_action_windows"/>
+
+	<menuitem name="Unit of measure" id="cba_unit_of_measure_action_menu" parent="cba_unit_of_measure_sub_menu"
+              action="cba_unit_of_measure_action_windows"/>
+	         
+    </data>
+	
+</odoo>

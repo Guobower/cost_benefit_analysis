@@ -25,6 +25,8 @@ class Material( models.Model ):
 	default_price_per_unit = fields.Float( string = 'Default Price' )
 	
 	avg_price_per_unit = fields.Float( compute="_compute_avg_price_per_unit" )
+
+	actual_price_per_ref_unit = fields.Float( compute="_compute_actual_price_per_ref_unit" )
 	
 
 	@api.one
@@ -49,4 +51,19 @@ class Material( models.Model ):
 			try:
 				recordObj.avg_price_per_unit = ( totalExpensesAmount / dailyExpensesLineCount ) / recordObj.quantity_per_unit
 			except ZeroDivisionError:
-				recordObj.avg_price_per_unit = 0.0    
+				recordObj.avg_price_per_unit = 0.0
+
+	def _compute_actual_price_per_ref_unit( self ):
+		'''	compute actual price per ref unit
+		'''
+
+		#	loop over to compute
+		for recordObj in self:
+			
+			#	change quatity per unit to ref unit
+			quantity_per_ref_unit = recordObj.quantity_per_unit * recordObj.uom_id.factor
+			try:
+				recordObj.actual_price_per_ref_unit = recordObj.avg_price_per_unit / quantity_per_ref_unit
+			except ZeroDivisionError:
+				recordObj.actual_price_per_ref_unit = 0
+

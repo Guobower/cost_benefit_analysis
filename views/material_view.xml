@@ -13,11 +13,12 @@
 			<field name="quantity_per_unit"/>
 			<field name="uom_id"/>
 			<field name="avg_price_per_unit"/>
+			<field name="actual_price_per_ref_unit"/>
 		
         <field name="expenses_history_ids" readonly="1">
 			<tree>
 				<field name="date"/>
-				<field name="vendor_id"/>
+				<field name="supplier_id"/>
 				<field name="quantity"/>
 				<field name="price_per_unit"/>
 				<field name="total_price"/>
@@ -38,6 +39,7 @@
 				<field name="quantity_per_unit"/>
 				<field name="uom_id"/>
 				<field name="avg_price_per_unit"/>
+				<field name="actual_price_per_ref_unit"/>
 			</tree>
 		</field>
 	</record>

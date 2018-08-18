@@ -26,6 +26,8 @@ class Product( models.Model ):
 	cost_per_outcome = fields.Float( compute="_compute_product_total_cost", string = 'Cost Per Outcome')
 	
 	sale_price = fields.Float()
+
+	process_time = fields.Float( string = 'Process Time (Min)' )
 	
 	profit_loss = fields.Float( compute="_compute_profit_loss", string = 'Profit/Loss')
 	
@@ -38,11 +40,8 @@ class Product( models.Model ):
 		#	assign value
 		for recordObj in self:
 			cost_per_outcome = 0.0
-			for bomObj in recordObj.bom_line_ids:
-				materialObj = bomObj.material_id
-				materialUsed = bomObj.materials_used
-				
-				cost_per_outcome += ( materialUsed * materialObj.avg_price_per_unit )
+			for bomLineObj in recordObj.bom_line_ids:
+				cost_per_outcome += bomLineObj.actual_cost_per_ref_unit
 			recordObj.cost_per_outcome = cost_per_outcome / recordObj.product_outcome
 			
 	def _compute_profit_loss( self ):
@@ -64,6 +63,18 @@ class BillOfMaterialLine( models.Model ):
 	materials_used = fields.Float( string = 'Materials Used In Manufacturing' )
 	
 	uom_id = fields.Many2one( related = 'material_id.uom_id' )
-	
+
+	actual_cost_per_ref_unit = fields.Float( compute="_compute_actual_cost" )
+
+	def _compute_actual_cost( self ):
+		'''	convert uom to reference unit and convert price 
+		'''
+
+		#	loop over record obj
+		for recordObj in self:
+
+			materials_used_per_ref_unit = recordObj.uom_id.factor * recordObj.materials_used 
+			
+			recordObj.actual_cost_per_ref_unit = materials_used_per_ref_unit * recordObj.material_id.actual_price_per_ref_unit
 	
     

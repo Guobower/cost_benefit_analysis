@@ -49,9 +49,9 @@ class DailyExpenseLine( models.Model ):
 
 	material_id = fields.Many2one( comodel_name = 'cba.material' )
 
-	vendor_id = fields.Many2one( comodel_name = 'res.partner',
+	supplier_id = fields.Many2one( comodel_name = 'res.partner',
                                 	domain = [ ('supplier','=', True )],
-                                	string = 'Vendor')
+                                	string = 'Supplier')
 				    
 	quantity = fields.Float( string = 'Quantity', default = 0.0 )
 
